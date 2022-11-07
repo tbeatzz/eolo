@@ -1,0 +1,293 @@
+@import "_reset", "_mixins", "_settings";
+:root {
+  --padding: 0em 0em;
+}
+* {
+  font-family: $font;
+}
+.preload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: map-get($gradients, "bg");
+  z-index: 4;
+  pointer-events: none;
+
+  animation: preload 2s ease 1 2.5s both;
+
+  @include flex(flex, column, nowrap, center, center);
+
+  &__img {
+    max-width: 30em;
+    animation: preloadlogo 2s ease 1 both;
+    fill: #000;
+  }
+}
+
+body {
+  padding: 2em;
+  background: map-get($gradients, "bg");
+}
+
+// --------HEADER--------
+.header {
+  &__wrapper {
+    max-width: 120rem;
+    margin: auto;
+    width: 100%;
+    padding: var(--padding);
+
+    @include flex(flex, row, nowrap, space-between, center);
+    @include phone(744px) {
+      @include flex(flex, row, wrap, space-between, center);
+      width: 100%;
+    }
+  }
+  &__h1 {
+    max-width: 10rem;
+  }
+  &__a {
+  }
+  &__img {
+    filter: invert(100%) sepia(50%) saturate(0) hue-rotate(131deg)
+      brightness(95%) contrast(10000%);
+  }
+
+  &__burger {
+    position: relative;
+    @include flex(flex, row, wrap, center, center);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: none;
+    @include phone(744px) {
+      display: block;
+    }
+  }
+  &__btn {
+    width: 50px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    transition: 0.3s;
+  }
+  &__btn::before,
+  &__btn::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    transition: 0.3s;
+  }
+  &__btn::before {
+    transform: translateY(-1em);
+  }
+  &__btn::after {
+    transform: translateY(1em);
+  }
+  &__nav {
+    width: 50%;
+    @include phone(744px) {
+      width: 100%;
+      @include flex(flex, row, wrap, center, center);
+    }
+  }
+  &__ul {
+    transition: 0.5s;
+    @include flex(flex, row, nowrap, flex-end, center);
+    @include phone(744px) {
+      @include flex(flex, column, nowrap, center, center);
+      width: 100%;
+      opacity: 0;
+      transition: 0.5s;
+      height: 0vh;
+      pointer-events: none;
+      gap: 2em;
+      &--activo {
+        opacity: 1;
+        height: 30vh;
+        pointer-events: auto;
+      }
+    }
+  }
+  &__li {
+    margin: 0 1em;
+  }
+  &__link {
+    filter: brightness(90%);
+    color: rgb(228, 225, 225);
+    font-size: 1.5em;
+    font-weight: 900;
+    padding: 0.5em;
+    position: relative;
+    transition: 0.5s;
+    letter-spacing: 2px;
+  }
+  &__link:after {
+    transition: 0.5s;
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background: whitesmoke;
+    left: 0;
+    bottom: 0;
+  }
+  &__link:hover {
+    filter: brightness(100%);
+    color: #fff;
+    transform: translate(0, -5px);
+  }
+  &__link:hover::after {
+    width: 100%;
+  }
+}
+.wrapper {
+  max-width: 120rem;
+  margin: auto;
+  width: 100%;
+  padding: var(--padding);
+}
+
+.main {
+  margin-top: 1em;
+
+  &__section {
+    border-radius: 1em;
+    max-width: 120rem;
+    margin: auto;
+    width: 100%;
+  }
+}
+
+//  --------DATOS--------
+.datos {
+  padding: 1em;
+  height: 40em;
+  &__wrapper {
+    @include flex(flex, row, nowrap, center, center);
+    @include phone(924px) {
+      @include flex(flex, column, nowrap, center, center);
+    }
+    border-radius: 1.5em;
+    max-width: 100rem;
+    height: 100%;
+    gap: 2em;
+  }
+  &__templluv {
+    // border-radius: 2em;
+    height: 19em;
+    @include neo(2em, 10px);
+    background: rgb(161, 140, 209);
+    background: linear-gradient(
+      90deg,
+      rgba(161, 140, 209, 0.1) 0%,
+      rgba(251, 194, 235, 0.1) 100%
+    );
+    padding: 1.5em;
+    width: 60%;
+    @include flex(flex, column, nowrap, space-between, center);
+    gap: 3em;
+    max-width: 25rem;
+    min-width: 25rem;
+    @include phone(924px) {
+      width: 100%;
+      max-width: 60rem;
+      min-width: 23rem;
+    }
+  }
+  &__temperatura {
+    @include flex(flex, row, nowrap, center, center);
+  }
+  &__svg {
+    margin: 0 1em;
+  }
+  &__svg svg {
+    max-width: 10em;
+    width: 100%;
+    height: 6em;
+    max-height: 6em;
+    fill: #000;
+  }
+  &__info {
+    @include flex(flex, column, nowrap, center, flex-start);
+    gap: 2em;
+  }
+  &__h2 {
+    font-weight: 700;
+    font-size: 2em;
+    color: #d5d4d4;
+    @include phone(493px) {
+      font-size: 1.3em;
+    }
+  }
+  &__estado {
+    font-weight: 700;
+    font-size: 3em;
+    color: #f5f5f5;
+    @include phone(493px) {
+      font-size: 2.2em;
+    }
+  }
+  &__lluvia {
+    @include flex(flex, row, nowrap, center, center);
+  }
+
+  &__h1 {
+    font-weight: 700;
+    font-size: 3em;
+    color: #f5f5f5;
+    text-align: center;
+    line-height: 1em;
+    @include phone(493px) {
+      font-size: 2.2em;
+    }
+  }
+  &__viento {
+    height: 19em;
+    width: 40%;
+    max-width: 25rem;
+    min-width: 25rem;
+    @include flex(flex, column, nowrap, center, center);
+    @include neo(2em, 10px);
+    background: rgb(161, 140, 209);
+    background: linear-gradient(
+      90deg,
+      rgba(161, 140, 209, 0.1) 0%,
+      rgba(251, 194, 235, 0.1) 100%
+    );
+    gap: 3em;
+    @include phone(924px) {
+      width: 100%;
+      max-width: 60rem;
+      min-width: 23rem;
+    }
+  }
+  &__h2--viento {
+    font-weight: 700;
+    font-size: 3em;
+    color: #f5f5f5;
+    line-height: 1em;
+  }
+  &__container {
+    @include flex(flex, row, nowrap, center, center);
+  }
+}
+
+// --------FOOTER--------
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(40, 39, 39, 0.9);
+  color: rgb(255, 255, 255);
+  text-align: center;
+}

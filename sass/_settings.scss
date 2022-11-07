@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@200;400;700&display=swap");
+$font: "Albert Sans", sans-serif;
+$colors: (
+  "main": #000,
+  "secondary": #ffffff,
+  "no-selected": #5e5c5d,
+);
+$text-size: (
+  "small": 1em,
+  "subtitle": 2em,
+  "title": 3em,
+);
+$gradients: (
+  "bg":
+    linear-gradient(
+      16deg,
+      rgb(72, 108, 171) 0%,
+      rgb(111, 102, 167) 25%,
+
+      rgb(108, 101, 144) 75%,
+      rgb(88, 115, 149) 100%
+    ),
+  "bg2":
+    linear-gradient(
+      16deg,
+      rgb(36, 56, 91) 0%,
+      rgb(61, 57, 93) 25%,
+      rgb(92, 64, 105) 50%,
+      rgb(70, 65, 94) 75%,
+      rgb(57, 74, 94) 100%
+    ),
+  "sky":
+    linear-gradient(
+      0deg,
+      rgba(255, 168, 148, 1) 0%,
+      rgba(210, 160, 191, 1) 35%,
+      rgba(151, 135, 179, 1) 57%,
+      rgba(124, 116, 165, 1) 73%,
+      rgba(82, 82, 122, 1) 91%
+    ),
+);
+
+@keyframes preload {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes preloadlogo {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
