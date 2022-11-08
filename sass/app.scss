@@ -28,7 +28,7 @@
 
 body {
   padding: 2em;
-  background: map-get($gradients, "bg");
+  background: map-get($gradients, "bg3");
 }
 
 // --------HEADER--------
@@ -51,8 +51,6 @@ body {
   &__a {
   }
   &__img {
-    filter: invert(100%) sepia(50%) saturate(0) hue-rotate(131deg)
-      brightness(95%) contrast(10000%);
   }
 
   &__burger {
@@ -122,7 +120,7 @@ body {
   }
   &__link {
     filter: brightness(90%);
-    color: rgb(228, 225, 225);
+    color: $text-main;
     font-size: 1.5em;
     font-weight: 900;
     padding: 0.5em;
@@ -170,7 +168,16 @@ body {
 //  --------DATOS--------
 .datos {
   padding: 1em;
-  height: 40em;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  margin: auto;
+  right: 0;
+  left: 0;
+  @include phone(924px) {
+    position: static;
+    height: auto;
+  }
   &__wrapper {
     @include flex(flex, row, nowrap, center, center);
     @include phone(924px) {
@@ -193,11 +200,18 @@ body {
     );
     padding: 1.5em;
     width: 60%;
-    @include flex(flex, column, nowrap, space-between, center);
+    @include flex(flex, column, nowrap, center, flex-start);
     gap: 3em;
     max-width: 25rem;
     min-width: 25rem;
     @include phone(924px) {
+      @include flex(flex, column, nowrap, center, center);
+      width: 100%;
+      max-width: 60rem;
+      min-width: 23rem;
+    }
+    @include phone(370px) {
+      @include flex(flex, column, nowrap, center, center);
       width: 100%;
       max-width: 60rem;
       min-width: 23rem;
@@ -223,7 +237,7 @@ body {
   &__h2 {
     font-weight: 700;
     font-size: 2em;
-    color: #d5d4d4;
+    color: $text-sec;
     @include phone(493px) {
       font-size: 1.3em;
     }
@@ -231,7 +245,7 @@ body {
   &__estado {
     font-weight: 700;
     font-size: 3em;
-    color: #f5f5f5;
+    color: $text-main;
     @include phone(493px) {
       font-size: 2.2em;
     }
@@ -243,7 +257,7 @@ body {
   &__h1 {
     font-weight: 700;
     font-size: 3em;
-    color: #f5f5f5;
+    color: $text-main;
     text-align: center;
     line-height: 1em;
     @include phone(493px) {
@@ -273,7 +287,7 @@ body {
   &__h2--viento {
     font-weight: 700;
     font-size: 3em;
-    color: #f5f5f5;
+    color: $text-main;
     line-height: 1em;
   }
   &__container {
