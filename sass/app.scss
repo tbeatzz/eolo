@@ -169,12 +169,13 @@ body {
 .datos {
   padding: 1em;
   position: absolute;
+  z-index: -1;
   height: 100vh;
   top: 0;
   margin: auto;
   right: 0;
   left: 0;
-  @include phone(924px) {
+  @include phone(1394px) {
     position: static;
     height: auto;
   }
