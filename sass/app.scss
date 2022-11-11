@@ -40,8 +40,8 @@ body {
     padding: var(--padding);
 
     @include flex(flex, row, nowrap, space-between, center);
-    @include phone(744px) {
-      @include flex(flex, row, wrap, space-between, center);
+    @include phone(924px) {
+      @include flex(flex, row, wrap, center, center);
       width: 100%;
     }
   }
@@ -174,6 +174,10 @@ body {
   margin: auto;
   right: 0;
   left: 0;
+  @media (max-height: 757px) {
+    position: static;
+    height: auto;
+  }
   @include phone(924px) {
     position: static;
     height: auto;
@@ -200,9 +204,9 @@ body {
     );
     padding: 1.5em;
     width: 60%;
-    @include flex(flex, column, nowrap, center, flex-start);
+    @include flex(flex, column, nowrap, center, center);
     gap: 3em;
-    max-width: 25rem;
+    max-width: 30rem;
     min-width: 25rem;
     @include phone(924px) {
       @include flex(flex, column, nowrap, center, center);
@@ -218,10 +222,15 @@ body {
     }
   }
   &__temperatura {
+    width: 100%;
     @include flex(flex, row, nowrap, center, center);
   }
   &__svg {
+    width: 50%;
     margin: 0 1em;
+    @include phone(924px) {
+      width: 40%;
+    }
   }
   &__svg svg {
     max-width: 10em;
@@ -229,14 +238,31 @@ body {
     height: 6em;
     max-height: 6em;
     fill: #000;
+    transition: 0.5s;
+    animation: 3s linear 1s infinite alternate svgs;
+  }
+  @keyframes svgs {
+    0% {
+      transform: translateY(10px);
+    }
+    50% {
+      transform: translateY(15px);
+    }
+    100% {
+      transform: translateY(20px);
+    }
   }
   &__info {
+    width: 50%;
     @include flex(flex, column, nowrap, center, flex-start);
     gap: 2em;
+    @include phone(924px) {
+      width: 60%;
+    }
   }
   &__h2 {
     font-weight: 700;
-    font-size: 2em;
+    font-size: 1.5em;
     color: $text-sec;
     @include phone(493px) {
       font-size: 1.3em;
@@ -244,7 +270,7 @@ body {
   }
   &__estado {
     font-weight: 700;
-    font-size: 3em;
+    font-size: 2.1em;
     color: $text-main;
     @include phone(493px) {
       font-size: 2.2em;
@@ -252,11 +278,12 @@ body {
   }
   &__lluvia {
     @include flex(flex, row, nowrap, center, center);
+    width: 100%;
   }
 
   &__h1 {
     font-weight: 700;
-    font-size: 3em;
+    font-size: 2.5em;
     color: $text-main;
     text-align: center;
     line-height: 1em;
@@ -267,7 +294,7 @@ body {
   &__viento {
     height: 19em;
     width: 40%;
-    max-width: 25rem;
+    max-width: 30rem;
     min-width: 25rem;
     @include flex(flex, column, nowrap, center, center);
     @include neo(2em, 10px);
